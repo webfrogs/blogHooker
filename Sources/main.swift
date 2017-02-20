@@ -25,4 +25,6 @@ drop.post("/hooker/updateBlog") { (request) in
     return JSON(["isReceived": true])
 }
 
-drop.run()
+drop.run(servers: [
+    "default": (host: "127.0.0.1", port: 8080, securityLayer: .none)
+    ])
