@@ -12,14 +12,17 @@ import Foundation
 
 let drop = Droplet()
 
-drop.post("/hooker/updateBlog") { _ in
+drop.post("/hooker/updateBlog") { (request) in
+    guard request.uri.host == "127.0.0.1" else {
+        throw Abort.notFound
+    }
 
     let task = CommandProcess()
     task.launchPath = "/carl/bin/blogRefresh"
 
     task.launch()
 
-    return JSON([:])
+    return JSON(["isReceived": true])
 }
 
 drop.run()
