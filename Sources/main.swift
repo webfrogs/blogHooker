@@ -18,7 +18,7 @@ drop.post("/hooker/updateBlog") { (request) in
     }
 
     let task = CommandProcess()
-    task.launchPath = "/carl/bin/blogRefresh"
+    task.launchPath = "/opt/bin/blogRefresh"
 
     task.launch()
 
